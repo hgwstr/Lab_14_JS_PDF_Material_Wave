@@ -1,13 +1,84 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="./js/main.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Резюме – Редактируемое</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Подключаем html2pdf для скачивания PDF (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Кнопка скачивания PDF -->
+        <div class="controls">
+            <button id="downloadPDF" class="ripple-btn">📄 Скачать PDF</button>
+        </div>
+
+        <!-- Резюме – основной блок, который будем экспортировать в PDF -->
+        <div class="resume" id="resume-content">
+            <div class="resume-header">
+                <div class="photo">
+                    <img src="/Smear.png" alt="Фото" id="profile-photo">
+                </div>
+                <div class="title">
+                    <h1 contenteditable="true" class="editable" data-field="fullName">Призрачный Студент</h1>
+                    <p contenteditable="true" class="editable" data-field="position">Frontend-разработчик</p>
+                </div>
+            </div>
+
+            <div class="resume-body">
+                <div class="sidebar">
+                    <div class="block">
+                        <h3 contenteditable="true" class="editable" data-field="contactsTitle">Контакты</h3>
+                        <ul>
+                            <li><span contenteditable="true" class="editable" data-field="email">apparition@imreal.com</span></li>
+                            <li><span contenteditable="true" class="editable" data-field="phone">+7 (666) 228-13-37</span></li>
+                            <li><span contenteditable="true" class="editable" data-field="telegram">@ghastly_dev</span></li>
+                        </ul>
+                    </div>
+                    <div class="block">
+                        <h3 contenteditable="true" class="editable" data-field="skillsTitle">Навыки</h3>
+                        <ul>
+                            <li contenteditable="true" class="editable" data-field="skill1">JavaScript (ES6+)</li>
+                            <li contenteditable="true" class="editable" data-field="skill2">React / Vue</li>
+                            <li contenteditable="true" class="editable" data-field="skill3">HTML5, CSS3, Flex/Grid</li>
+                            <li contenteditable="true" class="editable" data-field="skill4">Git, Webpack, Vite</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="main-content">
+                    <div class="block">
+                        <h3 contenteditable="true" class="editable" data-field="aboutTitle">О себе</h3>
+                        <p contenteditable="true" class="editable" data-field="aboutText">Люблю создавать красивые и удобные интерфейсы. Постоянно учусь новому, участвую в open-source.</p>
+                    </div>
+                    <div class="block">
+                        <h3 contenteditable="true" class="editable" data-field="expTitle">Опыт работы</h3>
+                        <div class="job">
+                            <div class="job-header">
+                                <span contenteditable="true" class="editable job-title" data-field="job1Title">Frontend-разработчик</span>
+                                <span contenteditable="true" class="editable job-date" data-field="job1Date">2022 – наст. время</span>
+                            </div>
+                            <div contenteditable="true" class="editable job-desc" data-field="job1Desc">Разработка SPA, оптимизация производительности, код-ревью.</div>
+                        </div>
+                        <div class="job">
+                            <div class="job-header">
+                                <span contenteditable="true" class="editable job-title" data-field="job2Title">Верстальщик</span>
+                                <span contenteditable="true" class="editable job-date" data-field="job2Date">2020 – 2022</span>
+                            </div>
+                            <div contenteditable="true" class="editable job-desc" data-field="job2Desc">Вёрстка макетов, адаптивная кросс-браузерная разработка.</div>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <h3 contenteditable="true" class="editable" data-field="eduTitle">Образование</h3>
+                        <p contenteditable="true" class="editable" data-field="eduText">МГТУ им. Баумана, факультет Информатики (2016–2020)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/resume.js"></script>
+</body>
 </html>
